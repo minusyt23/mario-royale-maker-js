@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;">
+<head>
+	<title>SNED - Super Noob Editor Dude!</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div id="mainContent">
+		<div id="menu">
+			<div class="scaledVisibleText" style="left: 4px;font-size: 18pt;"><strong>Menu</strong></div>
+			<div class="scaledVisibleText" style="left: 91px; top: 2px;">
+				<button id="openButton" onclick="openJsonFile();">OPEN</button>
+				<input type="file" name="fi" id="jsoninput" style="display: none;">
+			</div>
+				<div class="notVisible" style="top: 37.5px;">
+					<button class="sectionButtonMode" id="sbm1" value="0" style="top: calc(30px * 0);" onclick="setMode(0);">&nbsp;World&nbsp;</button>
+					<button class="sectionButtonMode" id="sbm2" value="1" style="top: calc(30px * 1);" onclick="setMode(1);">&nbsp;Level&nbsp;</button>
+					<button class="sectionButtonMode" id="sbm2" value="2" style="top: calc(30px * 2);" onclick="setMode(2);">&nbsp;Zones&nbsp;</button>
+					<button class="sectionButtonMode" id="sbm2" value="3" style="top: calc(30px * 3);" onclick="setMode(3);">&nbsp;Tiles&nbsp;</button>
+					<button class="sectionButtonMode" id="sbm2" value="4" style="top: calc(30px * 4);" onclick="setMode(4);">Objects</button>
+					<button class="sectionButtonMode" id="sbm2" value="5" style="top: calc(30px * 5);" onclick="setMode(5);">&nbsp;Warps&nbsp;</button>
+					<button class="sectionButtonMode" id="sbm2" value="6" style="top: calc(30px * 6);" onclick="setMode(6);">Ref img</button>
+					<button class="sectionButtonMode" id="sbm2" value="7" style="top: calc(30px * 7);" onclick="setMode(7);">Recents</button>
+					<button class="sectionButtonMode" id="sbm2" value="8" style="top: calc(30px * 8);" onclick="setMode(8);">&nbsp;Mario&nbsp;</button>
+					<div id="modeDiv" class="roundbox">
+						<div id="worldDiv" class="imodeDiv" style="top: calc(342px * 0);">
+							<label>Tilesheet source</label>
+							<input type="text" name="mapsource" style="position:absolute; left: 155px; width: calc(47% - 155px);"
+							value = "http://marioroyale.cyuubi.gq/img/game/smb_map.png"
+							onchange="json.resource[0].src = mapsrcinput.value; mapimg.src = mapsrcinput.value; requestAnimationFrame(updateCall);">
+							<label style="position:absolute; left: 47%;">Object sheet source</label>
+							<input type="text" name="objsource" style="position:absolute; left: calc(47% + 180px); width: calc(53% - 185px);"
+							value = "http://marioroyale.cyuubi.gq/img/game/smb_obj.png"
+							onchange="json.resource[1].src = objsrcinput.value; objimg.src = objsrcinput.value; requestAnimationFrame(updateCall);">
+						</div>
+						<div id="levelDiv" class="imodeDiv" style="top: calc(342px * 1);">
+							Level div
+						</div>
+						<div id="zonesDiv" class="imodeDiv" style="top: calc(342px * 2);">
+							Zones div
+						</div>
+						<div id="tilesDiv" class="imodeDiv" style="top: calc(342px * 3);">
+							Tiles div
+						</div>
+						<div id="objectsDiv" class="imodeDiv" style="top: calc(342px * 4);">
+							Objects div
+						</div>
+						<div id="warpsDiv" class="imodeDiv" style="top: calc(342px * 5);">
+							Warps div
+						</div>
+						<div id="refimgDiv" class="imodeDiv" style="top: calc(342px * 6);">
+							Refimg div
+						</div>
+						<div id="recentDiv" class="imodeDiv" style="top: calc(342px * 7);">
+							<button onclick="addToStorage()" style="position: absolute; left: 405px; top: 5px;">Add to storage</button>
+							<button onclick="localStorage.clear()" style="position: absolute; left: 405px; top: 35px;">Clear storage</button>
+							<div id="recentDiv" style="position: relative; width: 400px; height: 340px; overflow-y: scroll; overflow-x: hidden;">
+								<canvas id="recentContainer"></canvas>
+							</div>
+
+						</div>
+						<div id="marioDiv" class="imodeDiv" style="top: calc(342px * 8);">
+							<iframe src="http://marioroyale.cyuubi.gq" style="position: relative; width: calc(100vw - 114px); height: 340px;"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div id="editorDiv">
+			<div id="largeCanvas" style="background: #808080;">
+				<div id="scrollCanvas">
+					<canvas id="visualCanvas" style="position: relative;"></canvas>
+				</div>
+			</div>
+			<div id="toolDiv">
+				<label>Helpful!</label>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js/elemHacks.js"></script>
+	<script src="js/editor.js"></script>
+	<script src="js/listeners.js"></script>
+
+</body>
+</html>
